@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Post from './post';
 import './posts.css';
+import axios from 'axios';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
 
-  useEffect(() => {
+  /*useEffect(() => {
     const temporaryData = [
       {
         id: 1,
@@ -38,6 +39,19 @@ const Posts = () => {
     ];
 
     setPosts(temporaryData);
+  }, []);*/
+
+  useEffect(() => {
+    // Выполняем запрос на сервер для получения списка постов
+    const token = localStorage.getItem('token')
+    axios.get('http://localhost:8080/dream/all',{headers: {Authorization: `Bearer ${token}`}})
+      .then(response => {
+        setPosts(response.data);
+        console.log(response.data) // Устанавливаем полученные данные в состояние
+      })
+      .catch(error => {
+        console.error('Ошибка при получении списка постов:', error);
+      });
   }, []);
 
   return (
@@ -45,11 +59,11 @@ const Posts = () => {
       <div className="posts">
         {posts.map(post => (
           <Post
-            key={post.id}
+            key={post['id']}
             avatar={post.avatar}
-            username={post.username}
-            date={post.date}
-            text={post.text}
+            username={post['authorUsername']}
+            date={post['localDateTime']}
+            text={post['dreamText']}
             likes={post.likes}
             comments={post.comments}
           />
