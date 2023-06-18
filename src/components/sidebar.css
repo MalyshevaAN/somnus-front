@@ -1,0 +1,52 @@
+.sidebar-container {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 17vw;
+    max-width: 300px;
+    height: calc(100% - 100px);
+    overflow: hidden;
+}
+
+.sidebar {
+    position: relative;
+    display: flex;
+    background-color: #E0B1CB;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    border: 2px solid black;
+}
+
+li {
+    margin-top: 5vw;
+    list-style-type: none;
+    display: flex;
+}
+
+li a {
+    text-decoration: none !important;
+    color: black;
+    font-size: 1vw;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.link-container {
+    display: flex;
+    align-items: center;
+    max-width: 10vw;
+    min-width: 10vw;
+}
+
+.link-container img {
+    margin-right: 10px;
+}
+
+#exit {
+    position: absolute;
+    z-index: 7;
+    left: 2vw;
+    bottom: 3vw;
+}

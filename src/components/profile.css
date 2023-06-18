@@ -1,0 +1,170 @@
+.profile{
+    position: absolute;
+    top: 100px;
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    height: calc(100% - 100px);
+}
+@media (max-width: 1760px) {
+    .profile {
+      margin-left: 17vw;
+      width: calc(100% - 17vw);
+      height: calc(100% - 100px);
+    }
+  }
+  .profile-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    background-color: #BE95C4;
+    border-radius: 200px;
+    border: 2px solid black;
+  }
+
+  .profile-img{
+    position: absolute;
+    top: 4vw;
+    left: 6vw;
+    width: 14vw;
+    height: 9vw;
+    border-radius: 30px;
+    border: 2px solid #FFFE92;
+  }
+
+  .name{
+    position: absolute;
+    top: 14vw;
+    left: 7vw;
+    font-size: 1vw;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  .buttons-conteiner{
+    position: absolute;
+    display: flex;
+    top: 17vw;
+    left: 6vw;
+    width: 14vw;
+    height: 16.5vw;
+    background-color: #E0B1CB;
+    border-radius: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .btn{
+    position: relative;
+    display: block;
+    top: 5%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 12vw;
+    height: 2vw;
+    margin-bottom: 7%;
+    background-color: #BE95C4;
+    border-radius: 60px;
+  }
+
+  .btn-lnk{
+    position: relative;
+    display: block;
+    top: 5%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 12vw;
+    height: 2vw;
+    margin-bottom: 7%;
+    background-color: transparent;
+    border-radius: 60px;
+  }
+  .btn-lnk a{
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1vw;
+  }
+
+.btn-button{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    flex-direction: row;
+    transition: all .6s;
+    border-radius: 30px;
+    background-color: #BE95C4;
+    border: 2px solid #FFFE92;
+  }
+  .btn-button:hover{
+    transform: scale(1);
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: #c185a6df;
+  }
+  .btn-link{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 5px;
+    bottom: 0;
+    right: 0;
+    transition: all .6s;
+    border-radius: 30px;
+    background-color: #BE95C4;
+    border: 2px solid #FFFE92;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+  }
+  .btn-link:hover{
+    transform: scale(1);
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: #c185a6df;
+  }
+
+  .btn-button img{
+    width: 1vw;
+    right: 10px;
+  }
+
+  .profile-info{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    left: 17vw;
+    bottom: 0;
+    height: 80%;
+    width: 60%;
+    border-radius: 30px;
+    background-color: #E0B1CB;
+  }
+
+  .profile-info p{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    text-align: center;
+  }

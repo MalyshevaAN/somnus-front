@@ -1,0 +1,72 @@
+.sonForm{
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    width: calc(85% - 300px);
+    height: calc(85% - 100px);
+    border-radius: 200px;
+    border: 2px solid #FFFE92;
+}
+@media (max-width: 1760px) {
+    .sonForm {
+      margin-left: 8,5vw;
+      width: calc(85% - 8,5vw);
+      height: calc(85% - 100px);
+    }
+  }
+ .avatar-container{
+    position: absolute;
+    left: 5vw;
+    top: 2vw;
+ }
+ .avatar-container img{
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+ } 
+ .avatar-container span{
+    position: absolute;
+    top: 1.5vw;
+    left: 6vw;
+    font-size: 1.5vw;
+    font-family: 'Ubuntu', sans-serif;
+ } 
+ .SonSendForm{
+    position: absolute;
+    top: 20%;
+    width: 80%;
+    height: 60%;
+    border: 2px solid #FFFE92;
+    border-radius: 30px;
+ }
+ .SonSendForm textarea{
+    width: 100%;
+    height: 100%;
+    background-color: #E0B1CB;
+    border-radius: 30px;
+    font-size: 1vw;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all .6s;
+ }
+ .SonSendForm textarea:focus{
+    background-color: #e0b1bb;
+ }
+ #SendSonButton{
+    position: absolute;
+    top: 33vw;
+    left: 30vw;
+    right: 0;
+    margin: auto;
+    width: 20vw;
+    height: 3vw;
+    border: 2px solid #FFFE92;
+    background-color: #E0B1CB;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1vw;
+    transition: all .6s;
+ }
+ #SendSonButton:hover{
+    transform: scale(1);
+    background-color: rgb(159, 156, 195);
+ }
