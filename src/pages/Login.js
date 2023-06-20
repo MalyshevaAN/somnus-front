@@ -21,10 +21,8 @@ const Login = () => {
       const response = await axios.post('http://localhost:8080/user/auth/login', { email:email,
       password:password });
       if (response.status === 200) {
-        // console.log(response)
-        // console.log(response.data)
-        // console.log(response.data['accessToken'])
         const token = response.data['accessToken'];
+        console.log(token)
         localStorage.setItem('token', token); // Сохранение токена в localStorage
         navigate('/Main');
       } else {

@@ -5,7 +5,7 @@ import bed from './bed.png';
 import stat from './stat.png';
 import friends from './friends.png';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { AuthContext } from '../components/AuthContext'; 
+import { AuthContext } from '../components/AuthContext';
 
 const Profile = () => {
   const [activeButton, setActiveButton] = useState('инфо о вас');
@@ -13,6 +13,7 @@ const Profile = () => {
 
   const handleButtonClick = (buttonText) => {
     setActiveButton(buttonText);
+    console.log(userData)
   };
 
   return (
@@ -66,4 +67,3 @@ const Profile = () => {
 };
 
 export default Profile;
-

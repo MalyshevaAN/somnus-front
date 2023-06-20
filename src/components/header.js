@@ -9,7 +9,6 @@ import { AuthContext } from "./AuthContext";
 
 const Header = () => {
   const { authenticated } = useContext(AuthContext);
-
   return (
     <>
       <Navbar style={{ height: '100px', backgroundColor: '#BE95C4', boxShadow: '0px 2px 0px', zIndex: "7" }}>

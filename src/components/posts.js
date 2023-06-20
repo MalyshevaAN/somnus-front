@@ -54,18 +54,20 @@ const Posts = () => {
       });
   }, []);
 
+
   return (
     <div className="posts-container">
       <div className="posts">
         {posts.map(post => (
           <Post
             key={post['id']}
-            avatar={post.avatar}
+            id={post['id']}
+            authorid={post['authorId']}
             username={post['authorUsername']}
-            date={post['localDateTime']}
+            date={post['dateCreation']}
             text={post['dreamText']}
-            likes={post.likes}
-            comments={post.comments}
+            likes={post['likes']}
+            comments={post['comments']}
           />
         ))}
       </div>

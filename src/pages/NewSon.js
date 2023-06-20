@@ -5,9 +5,7 @@ import StarsBackground from '../components/stars';
 import Sidebar from '../components/sidebar';
 import axios from 'axios';
 
-
 const SendSon = () => {
-
   const token = localStorage.getItem('token');
   const handleSubmit = async (dreamText) => {
     try {
