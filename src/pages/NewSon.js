@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import SendForm from '../components/sonForm';
 import Header from '../components/header-auth';
 import StarsBackground from '../components/stars';
 import Sidebar from '../components/sidebar';
 import axios from 'axios';
+import { AuthContext } from '../components/AuthContext';
+
 
 const SendSon = () => {
+  const { userData } = useContext(AuthContext);
   const token = localStorage.getItem('token');
   const handleSubmit = async (dreamText) => {
     try {
@@ -22,20 +25,17 @@ const SendSon = () => {
       );
       if (response.status === 200) {
         console.log('Отправка сна на сервер:', response.data);
-        // Здесь вы можете обработать успешный ответ от сервера
       } else {
         console.log('Ошибка при отправке сна');
-        // Здесь вы можете обработать ошибку при отправке сна
       }
     } catch (error) {
       console.log('Ошибка при отправке сна:', error);
-      // Здесь вы можете обработать ошибку AJAX-запроса
     }
   };
 
   const user = {
-    name: 'test@test.com',
-    avatar: 'https://catherineasquithgallery.com/uploads/posts/2021-02/1612275687_118-p-kot-na-fioletovom-fone-141.jpg',
+    name: userData.firstName + " " + userData.lastName,
+    avatar: userData.url,
   };
 
   return (

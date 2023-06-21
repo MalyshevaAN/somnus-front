@@ -6,23 +6,49 @@ import stat from './stat.png';
 import friends from './friends.png';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { AuthContext } from '../components/AuthContext';
+import axios from 'axios';
+import Friends from './Friends';
 
 const Profile = () => {
   const [activeButton, setActiveButton] = useState('инфо о вас');
+  const [showFriends, setShowFriends] = useState(false);
   const { userData } = useContext(AuthContext);
 
   const handleButtonClick = (buttonText) => {
     setActiveButton(buttonText);
+    setShowFriends(buttonText === 'мои друзья');
     console.log(userData)
+  };
+  const token = localStorage.getItem('token')
+  console.log(userData)
+  const imageUrl = userData.url;
+  console.log(userData)
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('userAvatar', file);
+    try {
+      const response = await axios.post('http://localhost:8080/user/avatar',formData, {headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    } );
+      imageUrl = response.data['avatarPath'];
+      console.log('URL изображения:', imageUrl);
+    } catch (error) {
+      console.error('Ошибка при загрузке изображения:', error);
+    }
   };
 
   return (
     <div className='profile'>
       <div className='profile-container'>
-        <img
-          className='profile-img'
-          src='https://catherineasquithgallery.com/uploads/posts/2021-02/1612275687_118-p-kot-na-fioletovom-fone-141.jpg'
-        />
+        <div className='imgContainer'>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+          <img
+            className='profile-img'
+            src={imageUrl}
+          />
+        </div>
         <p className='name'>{userData && userData.email}</p>
         <div className='buttons-conteiner'>
           <div className='btn'>
@@ -43,7 +69,7 @@ const Profile = () => {
           <div className='btn'>
             <button className='btn-button' onClick={() => handleButtonClick('мои друзья')}>
               <img src={friends} />
-              мои друзья
+              мои подписки
             </button>
           </div>
           <div className='btn'>
@@ -59,7 +85,7 @@ const Profile = () => {
           </div>
         </div>
         <div className='profile-info'>
-          <p>{activeButton}</p>
+          {activeButton === 'мои друзья' && showFriends && <Friends />}
         </div>
       </div>
     </div>

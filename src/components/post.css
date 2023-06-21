@@ -24,19 +24,19 @@
 
 .username {
     position: absolute;
-    left: 8vw;
-    top: 2.5vw;
     font-size: 1vw;
     font-family: 'Ubuntu', sans-serif;
 }
-.date{
+
+.date {
     position: absolute;
     top: 2.5vw;
     right: 12vw;
     font-size: 1vw;
     font-family: 'Ubuntu', sans-serif;
 }
-.content{
+
+.content {
     position: absolute;
     width: 80%;
     height: 70%;
@@ -49,17 +49,20 @@
     border: 2px solid black;
     border-radius: 90px;
 }
-.interactions{
+
+.interactions {
     position: absolute;
     right: 5vw;
     bottom: 2vw;
 }
-.formComment{
+
+.formComment {
     opacity: 0.99;
     background-color: #E0B1CB;
     border: 2px solid #FFFE92;
 }
-.sendComment{
+
+.sendComment {
     position: absolute;
     width: 80%;
     height: 40%;
@@ -68,7 +71,21 @@
     z-index: 11;
     opacity: 1;
 }
-.text{
+
+.text {
     top: 2vw;
     font-size: 1vw;
+}
+
+.friends {
+    position: relative;
+    margin-left: 2vw;
+}
+
+.userContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 2vw;
+    left: 10vw;
 }

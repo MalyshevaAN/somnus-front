@@ -1,0 +1,29 @@
+.FriendConteiner{
+    position: relative;
+    display: flex;
+    margin-top: 5vw;
+    width: 15vw;
+    height: 15vw;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+}
+.FriendConteiner img{
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+#email{
+    position: relative;
+    z-index: 15;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2vw;
+}
+#name{
+    position: relative;
+    z-index: 15;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5vw;
+    
+}

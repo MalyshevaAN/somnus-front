@@ -28,20 +28,20 @@ const RandomSon = () => {
     <Sidebar />
     <div className="posts-container">
       <div className="posts">
-    {post ? (
-      <Post
-        key={post['id']}
-        id={post['id']}
-        authorid={post['authorId']}
-        username={post['authorUsername']}
-        date={post['dateCreation']}
-        text={post['dreamText']}
-        likes={post['likes']}
-        comments={post['comments']}
-      />
-    ) : (
-      <p>Loading...</p>
-    )}
+      {post ? (
+  <Post
+    key={post['id']}
+    id={post['id']}
+    authorid={post['authorId']}
+    username={post['authorUsername']}
+    date={post['dateCreation']}
+    text={post['dreamText']}
+    likes={post['likes']}
+    comments={post['comments']}
+  />
+) : (
+  <p>Loading...</p>
+)}
     </div>
     </div>
   </>
@@ -50,3 +50,17 @@ const RandomSon = () => {
 
 export default RandomSon;
 
+/*{post ? (
+  <Post
+    key={post['id']}
+    id={post['id']}
+    authorid={post['authorId']}
+    username={post['authorUsername']}
+    date={post['dateCreation']}
+    text={post['dreamText']}
+    likes={post['likes']}
+    comments={post['comments']}
+  />
+) : (
+  <p>Loading...</p>
+)}*/

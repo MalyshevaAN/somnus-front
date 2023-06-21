@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './post.css';
 import like from './like.png';
 import liked from './liked.png';
 import comment from './comment.png';
 import friend from './friends.png';
-import friendAdded from './friends.png';
+import friendAdded from './friendsAdded.png';
 import arrow from './arrow.png';
 import axios from 'axios';
 
 
-const Post = ({id, authorid, avatar, username, date, text, likes, comments }) => {
+const Post = ({ id, authorid, avatar, username, date, text, likes, comments }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isFriend, setIsFriend] = useState(false);
   const [commentInput, setCommentInput] = useState('');
   const [showComments, setShowComments] = useState(false);
   const [postComments, setPostComments] = useState([]);
   const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (likes.includes(id)) {
+      setIsLiked(true);
+    }
+  }, [likes, authorid]);
 
   const updateLikes = async () => {
     const token = localStorage.getItem('token')
@@ -25,7 +31,7 @@ const Post = ({id, authorid, avatar, username, date, text, likes, comments }) =>
           Authorization: `Bearer ${token}`,
         },
       });
-      if (response.status==200) window.location.reload();
+      // if (response.status == 200) window.location.reload();
     } catch (error) {
       console.error('Ошибка при обновлении лайков:', error);
     }
@@ -34,20 +40,30 @@ const Post = ({id, authorid, avatar, username, date, text, likes, comments }) =>
   const handleLike = () => {
     if (isLiked) {
       setIsLiked(false);
+
     } else {
       setIsLiked(true);
     }
     updateLikes();
   };
 
+
+  const handleLikeQuantity = (likes) => {
+    if (likes.includes(id)) {
+      return -1;
+    } else {
+      return 1;
+    }
+  };
+
   const submitComment = async () => {
     try {
-      const response = await axios.post(`http://localhost:8080/dream/comment/add/${id}`, {commentText:commentInput}, {
+      const response = await axios.post(`http://localhost:8080/dream/comment/add/${id}`, { commentText: commentInput }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      if (response.status==200) window.location.reload();
+      if (response.status == 200) window.location.reload();
     } catch (error) {
       console.error('Ошибка при отправке комментария:', error);
     }
@@ -61,7 +77,7 @@ const Post = ({id, authorid, avatar, username, date, text, likes, comments }) =>
   const formatDate = (date) => {
 
 
-// Получение отдельных компонентов даты и времени
+    // Получение отдельных компонентов даты и времени
     const formattedDate = date.slice(0, 10)
     return formattedDate
   }
@@ -92,7 +108,7 @@ const Post = ({id, authorid, avatar, username, date, text, likes, comments }) =>
           },
         }
       );
-      if (response.status==200) window.location.reload();
+      if (response.status == 200) window.location.reload();
     } catch (error) {
       console.error('Ошибка при добавлении в друзья:', error);
     }
@@ -108,7 +124,7 @@ const Post = ({id, authorid, avatar, username, date, text, likes, comments }) =>
           },
         }
       );
-      if (response.status==200) window.location.reload();
+      if (response.status == 200) ;
     } catch (error) {
       console.error('Ошибка при удалении из друзей:', error);
     }
@@ -124,20 +140,22 @@ const Post = ({id, authorid, avatar, username, date, text, likes, comments }) =>
 
   return (
     <div className="post">
-      <span className="username">{username}</span>
+      <span className='userContainer'>
+        <span className="username">{username}</span>
+        <span className="friends" onClick={handleToggleFriend}>
+          <img src={isFriend ? friendAdded : friend} alt="Friend" />
+        </span>
+      </span>
       <span className="date">{formatDate(date)}</span>
       <div className="content">
         <div className="text">{text}</div>
         <div className="interactions">
-          <span className="likes" onClick={handleLike}>
-            {likes} {isLiked ? (
+          <span className="likes" onClick={handleLike()}>
+            {likes.length + handleLikeQuantity(likes)} {isLiked ? (
               <img src={liked} alt="Liked" />
             ) : (
               <img src={like} alt="Like" />
             )}
-          </span>
-          <span className="friends" onClick={handleToggleFriend}>
-            <img src={isFriend ? friendAdded : friend} alt="Friend" />
           </span>
           <span className="comments" onClick={handleToggleComments}>
             {comments} <img src={comment} alt="Comment" />
